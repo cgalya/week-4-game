@@ -1,7 +1,6 @@
 window.onload = function() {
 
-
-
+// jellyfish objects
 var moonJelly = {
   healthPoints: 110,
   attackPower: 0,
@@ -26,6 +25,7 @@ var narcomedusae = {
   counterAttackPower: 19,
 };
 
+//setting variables for html selectors
   var healthPoints1 = $(".hp1");
   healthPoints1.text(moonJelly.healthPoints);
   var healthPoints2 = $(".hp2");
@@ -41,14 +41,13 @@ var narcomedusae = {
   var restartBtn = $("#restart");
   var enemies = $("#enemies");
 
- 
+ //hiding all jellyfish but the first row upon page loading
  var setUp = function() {
   $(".jellyPick, .jellyEnemy, .jellyDefend, #restart").hide();
   $(".jellyFirst").show();
-  commentary.text("");
-  attackBtn.prop('disabled', false);
 }
 
+//if you click on a jellyfish in the top row, hides and its "Your Jellyfish" version shows, and the others hide and their "Enemies Available to Attack" versions show
 var firstPick = function() {
   $("#moonFirst").click(function(){
     $(".jellyFirst").hide();
@@ -72,6 +71,7 @@ var firstPick = function() {
   })
 }
 
+//when you click on a potential enemy, its enemy version hides and its defender version shows, also clears commentary for the next battle
 var secondPick = function() {
   $("#nettleEnemy").click(function() {
     $("#nettleEnemy").hide();
@@ -95,21 +95,26 @@ var secondPick = function() {
   })
 }
 
+//calling the above functions
 setUp();
 firstPick();
 secondPick();
 
-//moon attack, nettle defend
+//moon jellylfish attacks, black sea nettle defends
+//when you click the attack button and the moon jellyfish in the "Your Jellyfish" section is visible and the sea nettle in the "Defender" section is available, run this code.
   attackBtn.click(function() {
     if ($("#moonPick").is(":visible") && $("#nettleDefend").is(":visible")) {
-      words.show();
+      //sets increasing attack power
       moonJelly.attackPower += 4;
+      //sets changing health points
       moonJelly.healthPoints -= blackSeaNettle.counterAttackPower;
       blackSeaNettle.healthPoints -= moonJelly.attackPower;
       healthPoints1.text(moonJelly.healthPoints);
       healthPoints2.text(blackSeaNettle.healthPoints);
+      //writes the commentary at the bottom of the page
       commentary.text("You attacked the Black Sea Nettle for " + moonJelly.attackPower + " damage.");
       commentary2.text("The Black Sea Nettle attacked you for " + blackSeaNettle.counterAttackPower + " damage.");
+      //if the attacking jellyfish's health points reach zero or below, show the restart button, declare game over, disable attack button, hide other potential enemies
       if (moonJelly.healthPoints <= 0) {
         restartBtn.show();
         commentary.text("You have been defeated. Game over!");
@@ -117,10 +122,12 @@ secondPick();
         attackBtn.prop('disabled', true);
         enemies.hide();
       }
+      //if the defender's health points reach zero, declare victory and allow player to choose another enemy
       if (blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated the Black Sea Nettle. You can choose to fight another enemy.");
         commentary2.text("");
         $("#nettleDefend").hide();
+      //if both attacker and defender's health points reach zero, declare victory but that the game is over, hide other enemies, disable attack button, show restart button
       if (moonJelly.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
         restartBtn.show();
         commentary.text("You have defeated the Black Sea Nettle, but you have no Health Points remaining. Game over!")
@@ -129,6 +136,7 @@ secondPick();
         enemies.hide();
         $("#nettleDefend").show();
       }
+      //if all remaining enemies' health points have reached zero, declare that all enemies have been beaten and show the restart button
       if (combJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0 &&blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
         restartBtn.show();
@@ -137,11 +145,11 @@ secondPick();
     }
   })
 
+//the following blocks of code are repeats of the block above but with jellyfish and their attributes substituted to cover all possible battle pairings
 
 //nettle attack, moon defend
    attackBtn.click(function() {
     if ($("#moonDefend").is(":visible") && $("#nettlePick").is(":visible")) {
-      words.show();
       blackSeaNettle.attackPower += 6;
       moonJelly.healthPoints -= blackSeaNettle.attackPower;
       blackSeaNettle.healthPoints -= moonJelly.counterAttackPower;
@@ -179,7 +187,6 @@ secondPick();
 //moon attack, comb defend
   attackBtn.click(function() {
     if ($("#moonPick").is(":visible") && $("#combDefend").is(":visible")) {
-      words.show();
       moonJelly.attackPower += 4;
       moonJelly.healthPoints -= combJelly.counterAttackPower;
       combJelly.healthPoints -= moonJelly.attackPower;
@@ -217,7 +224,6 @@ secondPick();
 //comb attack, moon defend
   attackBtn.click(function() {
     if ($("#moonDefend").is(":visible") && $("#combPick").is(":visible")) {
-      words.show();
       combJelly.attackPower += 8;
       moonJelly.healthPoints -= combJelly.attackPower;
       combJelly.healthPoints -= moonJelly.counterAttackPower;
@@ -255,7 +261,6 @@ secondPick();
 //moon attack, narco defend
   attackBtn.click(function() {
     if ($("#moonPick").is(":visible") && $("#narcoDefend").is(":visible")) {
-      words.show();
       moonJelly.attackPower += 4;
       moonJelly.healthPoints -= narcomedusae.counterAttackPower;
       narcomedusae.healthPoints -= moonJelly.attackPower;
@@ -293,7 +298,6 @@ secondPick();
 //narco attack, moon defend
   attackBtn.click(function() {
     if ($("#moonDefend").is(":visible") && $("#narcoPick").is(":visible")) {
-      words.show();
       narcomedusae.attackPower += 10;
       moonJelly.healthPoints -= narcomedusae.attackPower;
       narcomedusae.healthPoints -= moonJelly.counterAttackPower;
@@ -331,7 +335,6 @@ secondPick();
 //nettle attack, comb defend
   attackBtn.click(function() {
     if ($("#nettlePick").is(":visible") && $("#combDefend").is(":visible")) {
-      words.show();
       blackSeaNettle.attackPower += 6;
       blackSeaNettle.healthPoints -= combJelly.counterAttackPower;
       combJelly.healthPoints -= blackSeaNettle.attackPower;
@@ -369,7 +372,6 @@ secondPick();
 //comb attack, nettle defend
   attackBtn.click(function() {
     if ($("#nettleDefend").is(":visible") && $("#combPick").is(":visible")) {
-      words.show();
       combJelly.attackPower += 8;
       blackSeaNettle.healthPoints -= combJelly.attackPower;
       combJelly.healthPoints -= blackSeaNettle.counterAttackPower;
@@ -407,7 +409,6 @@ secondPick();
 //nettle attacks, narco defends
   attackBtn.click(function() {
     if ($("#nettlePick").is(":visible") && $("#narcoDefend").is(":visible")) {
-      words.show();
       blackSeaNettle.attackPower += 6;
       blackSeaNettle.healthPoints -= narcomedusae.counterAttackPower;
       narcomedusae.healthPoints -= blackSeaNettle.attackPower;
@@ -445,7 +446,6 @@ secondPick();
 //narco attacks, nettle defends
   attackBtn.click(function() {
     if ($("#nettleDefend").is(":visible") && $("#narcoPick").is(":visible")) {
-      words.show();
       narcomedusae.attackPower += 10;
       blackSeaNettle.healthPoints -= narcomedusae.attackPower;
       narcomedusae.healthPoints -= blackSeaNettle.counterAttackPower;
@@ -483,7 +483,6 @@ secondPick();
 //comb attacks, narco defends
   attackBtn.click(function() {
     if ($("#combPick").is(":visible") && $("#narcoDefend").is(":visible")) {
-      words.show();
       combJelly.attackPower += 8;
       combJelly.healthPoints -= narcomedusae.counterAttackPower;
       narcomedusae.healthPoints -= combJelly.attackPower;
@@ -521,7 +520,6 @@ secondPick();
 //narco attacks, comb defends
   attackBtn.click(function() {
     if ($("#combDefend").is(":visible") && $("#narcoPick").is(":visible")) {
-      words.show();
       narcomedusae.attackPower += 10;
       combJelly.healthPoints -= narcomedusae.attackPower;
       narcomedusae.healthPoints -= combJelly.counterAttackPower;

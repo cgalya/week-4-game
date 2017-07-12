@@ -41,10 +41,6 @@ var narcomedusae = {
   var restartBtn = $("#restart");
   var enemies = $("#enemies");
 
-  healthPoints1.text(moonJelly.healthPoints);
-  healthPoints2.text(blackSeaNettle.healthPoints);
-  healthPoints3.text(combJelly.healthPoints);
-  healthPoints4.text(narcomedusae.healthPoints);
  
  var setUp = function() {
   $(".jellyPick, .jellyEnemy, .jellyDefend, #restart").hide();
@@ -119,6 +115,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated the Black Sea Nettle. You can choose to fight another enemy.");
@@ -132,8 +129,9 @@ secondPick();
         enemies.hide();
         $("#nettleDefend").show();
       }
-      if (combJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
+      if (combJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0 &&blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }  
       }
     }
@@ -156,6 +154,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (moonJelly.healthPoints <= 0) {
         commentary.text("You have defeated the Moon Jellyfish. You can choose to fight another enemy.");
@@ -171,6 +170,7 @@ secondPick();
       }
       if (combJelly.healthPoints <= 0 && moonJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       } 
       }
     }
@@ -192,6 +192,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (combJelly.healthPoints <= 0) {
         commentary.text("You have defeated the Comb Jellyfish. You can choose to fight another enemy.");
@@ -205,8 +206,9 @@ secondPick();
         enemies.hide();
         $("#combDefend").show();
       }
-      if (combJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
+      if (combJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0 &&blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }  
       }
     }
@@ -228,6 +230,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (moonJelly.healthPoints <= 0) {
         commentary.text("You have defeated the Moon Jellyfish. You can choose to fight another enemy.");
@@ -241,8 +244,9 @@ secondPick();
         enemies.hide();
         $("#moonDefend").show();
       }
-      if (narcomedusae.healthPoints <= 0 && moonJelly.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
+      if (narcomedusae.healthPoints <= 0 && moonJelly.healthPoints <= 0 &&blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       } 
       }
     }
@@ -264,6 +268,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (narcomedusae.healthPoints <= 0) {
         commentary.text("You have defeated the Narcomedusae. You can choose to fight another enemy.");
@@ -277,8 +282,9 @@ secondPick();
         enemies.hide();
         $("#narcoDefend").show();
       }
-      if (combJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
+      if (combJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0 &&blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }  
       }
     }
@@ -300,6 +306,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (moonJelly.healthPoints <= 0) {
         commentary.text("You have defeated the Moon Jellyfish. You can choose to fight another enemy.");
@@ -315,6 +322,7 @@ secondPick();
       }
       if (combJelly.healthPoints <= 0 && moonJelly.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }  
       }
     }
@@ -336,6 +344,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (combJelly.healthPoints <= 0) {
         commentary.text("You have defeated the Comb Jellyfish. You can choose to fight another enemy.");
@@ -351,6 +360,7 @@ secondPick();
       }
       if (combJelly.healthPoints <= 0 && moonJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       } 
       }
     }
@@ -372,6 +382,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated the Black Sea Nettle. You can choose to fight another enemy.");
@@ -387,6 +398,7 @@ secondPick();
       }
       if (narcomedusae.healthPoints <= 0 && moonJelly.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }  
       }
     }
@@ -408,6 +420,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (narcomedusae.healthPoints <= 0) {
         commentary.text("You have defeated the Narcomedusae. You can choose to fight another enemy.");
@@ -423,6 +436,7 @@ secondPick();
       }
       if (combJelly.healthPoints <= 0 && moonJelly.healthPoints <= 0 && narcomedusae.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }  
       }
     }
@@ -444,6 +458,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated the Black Sea Nettle. You can choose to fight another enemy.");
@@ -459,6 +474,7 @@ secondPick();
       }
       if (combJelly.healthPoints <= 0 && moonJelly.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }
       }
     }
@@ -478,6 +494,7 @@ secondPick();
       if (combJelly.healthPoints <= 0) {
         restartBtn.show();
         commentary.text("You have been defeated. Game over!");
+        enemies.hide();
         commentary2.text("");
         attackBtn.prop('disabled', true);
       }
@@ -495,6 +512,7 @@ secondPick();
       }
       if (narcomedusae.healthPoints <= 0 && moonJelly.healthPoints <= 0 &&blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }
       }
     }
@@ -516,6 +534,7 @@ secondPick();
         commentary.text("You have been defeated. Game over!");
         commentary2.text("");
         attackBtn.prop('disabled', true);
+        enemies.hide();
       }
       if (combJelly.healthPoints <= 0) {
         commentary.text("You have defeated the Comb Jellyfish. You can choose to fight another enemy.");
@@ -531,6 +550,7 @@ secondPick();
       }
       if (combJelly.healthPoints <= 0 && moonJelly.healthPoints <= 0 && blackSeaNettle.healthPoints <= 0) {
         commentary.text("You have defeated all of your enemies!");
+        restartBtn.show();
       }
       }
     }

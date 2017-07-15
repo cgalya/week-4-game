@@ -2,7 +2,7 @@ window.onload = function() {
   
 //removing hidden class from these elements, it was set originally so that they wouldn't flash upon reloading the page
 //hiding all jellyfish but the first row upon page loading
-var setUp = function() {
+function setUp() {
   $(".jellyPick, .jellyEnemy, .jellyDefend, #restart").removeClass("hidden");
   $(".jellyPick, .jellyEnemy, .jellyDefend, #restart").hide();
   $(".jellyFirst").show();
@@ -10,7 +10,7 @@ var setUp = function() {
 setUp();
 
 //if you click on a jellyfish in the top row, hides and its "Your Jellyfish" version shows, and the others hide and their "Enemies Available to Attack" versions show
-var firstPick = function() {
+function firstPick() {
   $("#moonFirst").click(function(){
     $(".jellyFirst").hide();
     $("#moonPick").show();
@@ -34,7 +34,7 @@ var firstPick = function() {
 }
 
 //when you click on a potential enemy, its enemy version hides and its defender version shows, also clears commentary for the next battle
-var secondPick = function() {
+function secondPick() {
   $("#nettleEnemy").click(function() {
     $("#nettleEnemy").hide();
     $("#nettleDefend").show();
@@ -48,7 +48,7 @@ var secondPick = function() {
   $("#combEnemy").click(function() {
     $("#combEnemy").hide();
     $("#combDefend").show();
-    $("#commentary").text("");
+    $("#commentary").html("");
   })
   $("#narcoEnemy").click(function() {
     $("#narcoEnemy").hide();
@@ -150,10 +150,12 @@ attackBtn.click(function() {
     battle(combJelly, narcomedusae, moonJelly, blackSeaNettle);
   } else if ($("#narcoPick").is(":visible") && $("#combDefend").is(":visible")) {
     battle(narcomedusae, combJelly, moonJelly, blackSeaNettle);
+  } else {
+    commentary.text("There is no enemy here.");
   }
 })
 
-  var battle = function(attacker, defender, extra, other) {
+  function battle(attacker, defender, extra, other) {
     //attack power increases
     attacker.attackPower += attacker.increasePower;
     //health points deductions are taken and counts are updated
@@ -162,7 +164,7 @@ attackBtn.click(function() {
     attacker.healthPointsLocation.text(attacker.healthPoints);
     defender.healthPointsLocation.text(defender.healthPoints);
     //commentary lines underneath the battle telling what's happening
-    commentary.html("You attacked the " + defender.name + " for " + attacker.attackPower + " damage.");
+    commentary.text("You attacked the " + defender.name + " for " + attacker.attackPower + " damage.");
     commentary2.text("The " + defender.name + " attacked you for " + defender.counterAttackPower + " damage.");
     //if the attacker loses
     if (attacker.healthPoints <= 0) {
@@ -177,6 +179,7 @@ attackBtn.click(function() {
       commentary.text("You have defeated the " + defender.name + ". You can choose to fight another enemy.");
       commentary2.text("");
       defender.defendID.hide();
+     }
     //if both attacker and defender lose
     if (attacker.healthPoints <= 0 && defender.healthPoints <= 0) {
       restartBtn.show();
@@ -198,6 +201,6 @@ $("#restart").click(function() {
   location.reload();
   })
 
-}
+
 
 };
